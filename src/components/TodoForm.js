@@ -2,10 +2,17 @@ import React from "react";
 
 class TodoForm extends React.Component {
 
+    handleChanges = () => {
+
+    }
+
     render(){
         return(
             <div>
-                <p>TodoForm</p>
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChanges} type="text" name="item" />
+                    <button>Add Todo</button>
+                </form>
             </div>
         )
     }
