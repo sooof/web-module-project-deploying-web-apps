@@ -31,13 +31,28 @@ class App extends React.Component {
       todolists: todolists.filter(item => (!item.completed))
     })
   }
+  handleAddItem = item => {
+    console.log("App add Item")
+    const newTodoItem = {
+      task: item,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      ...this.state,
+      todolists: [...this.state.todolists, newTodoItem]
+    })
+    console.log("App this.state = ", this.state);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Todo List: MVP</h1>
         {/* <h2>Welcome to your Todo App!</h2> */}
         <TodoList todolists={this.state.todolists}/>
-        <TodoForm/>
+        <TodoForm handleAddItem={this.handleAddItem} />
         <button onClick={this.handleClearItem} className="clear-btn">Clear Purchased</button>
       </div>
     );
